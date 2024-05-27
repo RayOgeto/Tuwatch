@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendations</title>
+</head>
+<body>
+    <h1>Movie Recommendations</h1>
+    <ul>
+    {% for movie in movies %}
+        <li>
+            <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+            <h2>{{ movie.title }}</h2>
+            <p>{{ movie.description }}</p>
+            <p>Release Date: {{ movie.release_date }}</p>
+            <p>Rating: {{ movie.rating }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
