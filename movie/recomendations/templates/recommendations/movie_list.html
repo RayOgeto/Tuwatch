@@ -4,6 +4,10 @@
     <title>Movie Recommendations</title>
 </head>
 <body>
+    <form method="GET" action="{% url 'search_results' %}">
+        <input type="text" name="movie_name" placeholder="Enter a movie name...">
+        <button type="submit">Search</button>
+      </form>
     <h1>Movie Recommendations</h1>
     <ul>
     {% for movie in movies %}
@@ -16,5 +20,34 @@
         </li>
     {% endfor %}
     </ul>
+
+    <h1>Recomended Movies</h1>
+    <h1>Search Results for "{{ query }}"</h1>
+    <ul>
+        {% for movie in data %}
+            <!-- <li>{{ movie.title }}</li> -->
+            <li>
+                <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+                <h2>{{ movie.title }}</h2>
+                <p>{{ movie.description }}</p>
+                <p>Release Date: {{ movie.release_date }}</p>
+                <p>Rating: {{ movie.rating }}</p>
+            </li>
+            <!-- Display other movie details as needed -->
+        {% empty %}
+            <li>No results found</li>
+        {% endfor %}
+    </ul>
+<ul>
+  {% for movie in recomendations %}
+    <li>{{ movie.title }}</li>
+    <!-- Display other movie details as needed -->
+    <h2>{{ movie.title }}</h2>
+            <p>{{ movie.description }}</p>
+            <p>Release Date: {{ movie.release_date }}</p>
+            <p>Rating: {{ movie.rating }}</p>
+  {% endfor %}
+</ul>
+
 </body>
 </html>
