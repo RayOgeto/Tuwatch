@@ -14,9 +14,9 @@
         <li>
             <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
             <h2>{{ movie.title }}</h2>
-            <p>{{ movie.description }}</p>
+            <p>{{ movie.overview }}</p>
             <p>Release Date: {{ movie.release_date }}</p>
-            <p>Rating: {{ movie.rating }}</p>
+            <p>Rating: {{ movie.vote_average }}</p>
         </li>
     {% endfor %}
     </ul>
@@ -29,9 +29,9 @@
             <li>
                 <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
                 <h2>{{ movie.title }}</h2>
-                <p>{{ movie.description }}</p>
+                <p>{{ movie.overview }}</p>
                 <p>Release Date: {{ movie.release_date }}</p>
-                <p>Rating: {{ movie.rating }}</p>
+                <p>Rating: {{ movie.movie_rating }}</p>
             </li>
             <!-- Display other movie details as needed -->
         {% empty %}
