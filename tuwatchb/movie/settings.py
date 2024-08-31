@@ -47,8 +47,12 @@ SECRET_KEY = 'django-insecure-s8ynwg_zvtc2hi=98u*s30e4(+0x4w!8)7-)@pc)n=&w5=m+=_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+  'localhost',
+  '127.0.0.1',
+  'tuwatch-1.onrender.com',
+  '100.20.92.101']
 
 # Application definition
 
