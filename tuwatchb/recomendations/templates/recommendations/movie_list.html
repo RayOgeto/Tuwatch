@@ -37,6 +37,33 @@
             font-weight: 600;
             padding-top: 30px;
         }
+
+        img {
+            width: 100%;
+            padding: 20px;
+        }
+        button {
+            border-radius: 10px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .display {
+            margin: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .p- {
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 1rem #20232a;
+        }
     </style>
 </head>
 <body>
@@ -46,7 +73,7 @@
     <form method="GET" action="{% url 'search_results' %}">
         <input type="text" name="movie_name" placeholder="Enter a movie name...">
         <button type="submit">Search</button>
-      </form>
+    </form>
     
     <ul>
     {% for movie in movies %}
@@ -60,33 +87,59 @@
     {% endfor %}
     </ul>
 
-    <h1>Recomended Movies</h1>
     <h1>Search Results for "{{ query }}"</h1>
-    <ul>
-        {% for movie in data %}
-            <!-- <li>{{ movie.title }}</li> -->
-            <li>
-                <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
-                <h2>{{ movie.title }}</h2>
-                <p>{{ movie.overview }}</p>
-                <p>Release Date: {{ movie.release_date }}</p>
-                <p>Rating: {{ movie.movie_rating }}</p>
-            </li>
+    <div class="container">
+        <div class="display">
+            <div class="p-">
+                
+                    {% for movie in data %}
+                        <!-- <li>{{ movie.title }}</li> -->
+                        
+                            <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+                            <h2>{{ movie.title }}</h2>
+                            <p>{{ movie.overview }}</p>
+                            <p>Release Date: {{ movie.release_date }}</p>
+                            <p>Rating: {{ movie.movie_rating }}</p>
+                        
+                        <!-- Display other movie details as needed -->
+                    {% empty %}
+                        <li>No results found</li>
+                    {% endfor %}
+                
+            </div>
+            <div class="p-">
+                
+                {% for movie in data %}
+                    <!-- <li>{{ movie.title }}</li> -->
+                    
+                        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+                        <h2>{{ movie.title }}</h2>
+                        <p>{{ movie.overview }}</p>
+                        <p>Release Date: {{ movie.release_date }}</p>
+                        <p>Rating: {{ movie.movie_rating }}</p>
+                    
+                    <!-- Display other movie details as needed -->
+                {% empty %}
+                    <li>No results found</li>
+                {% endfor %}
+            
+        </div>
+        </div>
+    </div>
+
+    <div class="display">
+        <ul>
+        {% for movie in recomendations %}
+            <li>{{ movie.title }}</li>
             <!-- Display other movie details as needed -->
-        {% empty %}
-            <li>No results found</li>
+            <h2>{{ movie.title }}</h2>
+                    <p>{{ movie.description }}</p>
+                    <p>Release Date: {{ movie.release_date }}</p>
+                    <p>Rating: {{ movie.rating }}</p>
         {% endfor %}
-    </ul>
-<ul>
-  {% for movie in recomendations %}
-    <li>{{ movie.title }}</li>
-    <!-- Display other movie details as needed -->
-    <h2>{{ movie.title }}</h2>
-            <p>{{ movie.description }}</p>
-            <p>Release Date: {{ movie.release_date }}</p>
-            <p>Rating: {{ movie.rating }}</p>
-  {% endfor %}
-</ul>
+        </ul>
+
+    </div>
 
 </body>
 </html>
